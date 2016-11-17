@@ -1,0 +1,14 @@
+#
+# System user for deamon process.
+#
+nginx_user: "nginx"
+
+#
+# System group for deamon process.
+#
+nginx_group: "nginx"
+
+#
+# Array with services to be restarted on changes.
+#
+nginx_services: ["nginx"]

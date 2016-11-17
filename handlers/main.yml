@@ -1,0 +1,6 @@
+---
+
+- name: nginx - restart
+  become: yes
+  service: name="{{ item }}" state="restarted"
+  with_items: "{{ nginx_services }}"

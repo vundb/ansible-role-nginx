@@ -1,0 +1,20 @@
+---
+
+# install nginx
+
+- name: install nginx
+  become: yes
+  portage: package=www-servers/nginx state=emerged newuse=yes update=yes
+
+
+# configure nginx
+
+- name: write nginx config
+  become: yes
+  template:
+    src: "nginx.conf.j2"
+    dest: "/etc/nginx/nginx.conf"
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_group }}"
+    mode: "0644"
+  notify: nginx - restart

@@ -11,7 +11,15 @@ None.
 Role Variables
 --------------
 
-None.
+- `nginx_user`:
+Name of system user to run service with. Default value is "nginx"
+
+- `nginx_group`:
+Name of system group to run service with. Default value is "nginx"
+
+- `nginx_services`:
+Array with services to be restarted on configuration changes. Default value
+is ["nginx"]
 
 Dependencies
 ------------
