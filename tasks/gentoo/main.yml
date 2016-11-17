@@ -18,3 +18,21 @@
     group: "{{ nginx_group }}"
     mode: "0644"
   notify: nginx - restart
+
+- name: ensure required directories are present
+  become: yes
+  file:
+    path: "{{ item.path }}"
+    state: "directory"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "0755"
+  with_items:
+    - path: "/etc/nginx/vhosts.d"
+      owner: "{{ nginx_user }}"
+      group: "root"
+      mode: "0755"
+    - path: "var/log/nginx"
+      owner: "{{ nginx_user }}"
+      group: "root"
+      mode: "0755"
