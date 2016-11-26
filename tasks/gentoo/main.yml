@@ -28,7 +28,11 @@
     group: "{{ item.group }}"
     mode: "0755"
   with_items:
-    - path: "/etc/nginx/vhosts.d"
+    - path: "/etc/nginx/sites.d"
+      owner: "{{ nginx_user }}"
+      group: "root"
+      mode: "0755"
+    - path: "/etc/nginx/upstreams.d"
       owner: "{{ nginx_user }}"
       group: "root"
       mode: "0755"
@@ -36,3 +40,10 @@
       owner: "{{ nginx_user }}"
       group: "root"
       mode: "0755"
+
+
+# post tasks
+
+- name: ensure service is running
+  become: yes
+  service: name=nginx state=started enabled=yes
