@@ -67,6 +67,7 @@ http {
 	#	root /var/www/localhost/htdocs;
 	#}
 
+  # include sites and upstreams configuration
 	include sites.d/*.conf;
 	include upstreams.d/*.conf;
 }
